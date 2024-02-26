@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My AI Demo</title>
+    <!-- External Styles -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        #app {
+            max-width: 640px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #409eff;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            color: #409eff;
+            border-bottom: 2px solid #409eff;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        .upload-demo {
+            border: 1px dashed #d9d9d9;
+            border-radius: 6px;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            background-color: #fafafa;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .upload-demo:hover {
+            border-color: #409eff;
+            color: #409eff;
+            background-color: #f0faff;
+        }
+
+        .el-upload__text em {
+            color: #409eff;
+            cursor: pointer;
+            font-style: normal;
+            text-decoration: underline;
+        }
+
+        .el-upload__tip {
+            color: #999;
+            margin-top: 10px;
+        }
+
+        .el-button {
+            margin-top: 10px;
+        }
+
+        .el-input, .el-textarea {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app">
+    <h1>Hello, My AI Demo!</h1>
+    <div class="section">
+        <h2>NLP纠错</h2>
+        <el-input placeholder="请输入内容" v-model="nlp_input" clearable></el-input>
+        <el-input type="textarea" :rows="2" placeholder="识别结果" v-model="nlp_output"></el-input>
+        <el-button type="primary" @click="nlp_correction">纠错</el-button>
+    </div>
+
+    <div class="section">
+        <h2>图像识别</h2>
+        <el-upload class="upload-demo" drag action="http://127.0.0.1:8080/img" :on-success="imgUploadFile" multiple>
+            <i class="el-icon-upload"></i>
+            <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+            <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
+        </el-upload>
+        <el-input type="textarea" :rows="2" placeholder="识别结果" v-model="img_output"></el-input>
+    </div>
+
+    <div class="section">
+        <h2>文字识别</h2>
+        <el-upload class="upload-demo" drag action="http://127.0.0.1:8080/word" :on-success="wordUploadFile" multiple>
+            <i class="el-icon-upload"></i>
+            <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+            <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
+        </el-upload>
+        <el-input type="textarea" :rows="2" placeholder="识别结果" v-model="word_output"></el-input>
+    </div>
+</div>
+
+</body>
+
+<!--import Vue before Element-->
+<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+<!--import JavaScript-->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            "nlp_input": "",
+            "nlp_output": "",
+            "img_output": "",
+            "word_output": ""
+        },
+        methods: {
+            nlp_correction() {
+                axios.get("http://127.0.0.1:8080/nlp", {
+                    params: {
+                        text: this.nlp_input
+                    }
+                }).then(res => {
+                    this.nlp_output = res.data;
+                    console.log(res.data);
+                })
+            },
+            imgUploadFile(res, file) {
+                console.log(res);
+                this.img_output = res;
+            },
+            wordUploadFile(res, file) {
+                console.log(res);
+                this.word_output = res;
+            }
+        }
+    });
+</script>
+</html>
