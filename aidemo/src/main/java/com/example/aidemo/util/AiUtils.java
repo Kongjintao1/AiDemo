@@ -15,11 +15,13 @@ import java.util.HashMap;
  * @Date: 2024年02月19日 15:45
  */
 public class AiUtils {
+
+    //文字识别
     public static String word(MultipartFile file) throws IOException {
         //设置APPID/AK/SK
-        String APP_ID = "52128584";
-        String API_KEY = "nGGNYBQjypU4sfCAc4ITHirS";
-        String SECRET_KEY = "Ad4rX3k4TsLsDfEvwDCkwTsDHBiqsFFt";
+        String APP_ID = "**";
+        String API_KEY = "**";
+        String SECRET_KEY = "**";
         // 初始化一个AipOcr
         AipOcr client = new AipOcr(APP_ID, API_KEY, SECRET_KEY);
         // 可选：设置网络连接参数
@@ -37,11 +39,13 @@ public class AiUtils {
         return sb.toString();
     }
 
+
+    //图像识别
     public static String img(MultipartFile file) throws IOException {
         //设置APPID/AK/SK
-        String APP_ID = "52135508";
-        String API_KEY = "qYox4xpSjREPCqh71LOa7Fcj";
-        String SECRET_KEY = "zxxBog6uoX3HLXozN6wGdk9ssdT7az5f";
+        String APP_ID = "**";
+        String API_KEY = "**";
+        String SECRET_KEY = "**";
         // 初始化一个AipImageClassify
         AipImageClassify client = new AipImageClassify(APP_ID, API_KEY, SECRET_KEY);
         // 可选：设置网络连接参数
@@ -55,11 +59,12 @@ public class AiUtils {
         return s;
     }
 
+    //文字纠错
     public static String nlp(String text){
         //设置APPID/AK/SK
-        String APP_ID = "52136421";
-        String API_KEY = "cWO4puv3ObSkwv1Gd2j8dGLw";
-        String SECRET_KEY = "e4sHG6ySuZhKlNhVsMr7UKU0ZWG7wGR9";
+        String APP_ID = "**";
+        String API_KEY = "**";
+        String SECRET_KEY = "**";
         // 初始化一个AipNlp
         AipNlp client = new AipNlp(APP_ID, API_KEY, SECRET_KEY);
         // 可选：设置网络连接参数

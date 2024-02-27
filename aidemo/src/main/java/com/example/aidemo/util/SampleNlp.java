@@ -11,9 +11,9 @@ public class SampleNlp {
 
     public static void main(String[] args) {
         //设置APPID/AK/SK
-        String APP_ID = "52136421";
-        String API_KEY = "cWO4puv3ObSkwv1Gd2j8dGLw";
-        String SECRET_KEY = "e4sHG6ySuZhKlNhVsMr7UKU0ZWG7wGR9";
+        String APP_ID = "**";
+        String API_KEY = "**";
+        String SECRET_KEY = "**";
         // 初始化一个AipNlp
         AipNlp client = new AipNlp(APP_ID, API_KEY, SECRET_KEY);
         // 可选：设置网络连接参数

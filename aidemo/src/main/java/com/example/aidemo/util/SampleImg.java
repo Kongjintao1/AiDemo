@@ -14,9 +14,9 @@ public class SampleImg {
 
     public static void main(String[] args) {
         //设置APPID/AK/SK
-        String APP_ID = "52135508";
-        String API_KEY = "qYox4xpSjREPCqh71LOa7Fcj";
-        String SECRET_KEY = "zxxBog6uoX3HLXozN6wGdk9ssdT7az5f";
+        String APP_ID = "**";
+        String API_KEY = "**";
+        String SECRET_KEY = "**";
         // 初始化一个AipImageClassify
         AipImageClassify client = new AipImageClassify(APP_ID, API_KEY, SECRET_KEY);
         // 可选：设置网络连接参数

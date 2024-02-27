@@ -11,13 +11,11 @@ import java.util.HashMap;
  */
 public class Sample {
 
-
-
     public static void main(String[] args) {
         //设置APPID/AK/SK
-        String APP_ID = "52128584";
-        String API_KEY = "nGGNYBQjypU4sfCAc4ITHirS";
-        String SECRET_KEY = "Ad4rX3k4TsLsDfEvwDCkwTsDHBiqsFFt";
+        String APP_ID = "**";
+        String API_KEY = "**";
+        String SECRET_KEY = "**";
         // 初始化一个AipOcr
         AipOcr client = new AipOcr(APP_ID, API_KEY, SECRET_KEY);
         // 可选：设置网络连接参数
